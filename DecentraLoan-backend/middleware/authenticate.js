@@ -5,7 +5,7 @@ module.exports = (req, res, next) => {
         req.userId = 1;
 
         // Retrieving XRP account associated with the user (for this mock, let's assume it's a fixed account)
-        req.xrpAccount = "rSomeXRPAddress12345";
+        req.xrpAccount = "rDQp5Mipg21H5KNijt24DeAtRcmzUu93a7";
 
         next();
     } catch (error) {

@@ -1,25 +1,24 @@
 const User = require('../models/user');
 const {
+    rippleConnection, // Import the rippleConnection instance
     generateNewWallet,
-    getAccountBalance,
     sendTransaction
 } = require('../utils/xrp-utils');
 
 exports.createUser = async (req, res) => {
     try {
-        const xrpWallet = await generateNewWallet();
-        req.body.xrpAccount = xrpWallet.address;
+        console.log("New User: ---------------------------------")
+
+        // You can still perform other checks and validations on the user data here
 
         const newUser = await User.create(req.body);
 
-        // Return the wallet secret but don't store in the database
-        newUser.xrpSecret = xrpWallet.secret;
+        console.log("New Userssssssssssssssssssssssssssssssss: ---------------------------------")
 
         res.status(201).json({
             status: 'success',
             data: {
-                user: newUser,
-                xrpSecret: xrpWallet.secret
+                user: newUser
             }
         });
     } catch (err) {

@@ -8,12 +8,12 @@ exports.createChamaGroup = async (req, res) => {
 
         // Logic could be added here to ensure the group's initial liquidity
         // For instance: 
-        // if (bankXrpBalance < INITIAL_GROUP_LIQUIDITY) {
-        //     return res.status(400).json({
-        //         status: 'fail',
-        //         message: 'Insufficient XRP liquidity for group creation'
-        //     });
-        // }
+       if (bankXrpBalance < INITIAL_GROUP_LIQUIDITY) {
+           return res.status(400).json({
+               status: 'fail',
+               message: 'Insufficient XRP liquidity for group creation'
+           });
+       }
 
         const newGroup = await ChamaGroup.create(req.body);
         res.status(201).json({
